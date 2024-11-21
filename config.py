@@ -13,7 +13,7 @@ class Config(object):
     ARQ_API_KEY = "PUYWNL-IEPXJF-YAIIMI-GVJRPO-ARQ"
     SPAMWATCH_API = None
     TOKEN = getenv("TOKEN", "7323855879:AAFJg2DZeBg3hO2zat1YfAU5WFB_-bhDowE")
-    OWNER_ID = int(getenv("OWNER_ID", 6037364404)
+    OWNER_ID = int(getenv("OWNER_ID", 6037364404))
     OWNER_USERNAME = getenv("OWNER_USERNAME", "usaniih")
     SUPPORT_CHAT = getenv("SUPPORT_CHAT", "bluetsst")
     LOGGER_ID = int(getenv("LOGGER_ID", "-1002370079234"))
