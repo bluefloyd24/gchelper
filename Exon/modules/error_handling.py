@@ -75,7 +75,7 @@ def error_callback(update: Update, context: CallbackContext):
 
     if context.error not in errors:
         try:
-            # Generate the pretty error message
+            # Buat pesan error yang lebih rapi menggunakan pretty_errors
             stringio = io.StringIO()
             pretty_errors.output_stderr = stringio
             pretty_errors.excepthook(
@@ -89,7 +89,7 @@ def error_callback(update: Update, context: CallbackContext):
         except Exception:
             pretty_error = "Failed to create pretty error."
 
-        # Generate traceback
+        # Buat traceback lengkap
         tb_list = traceback.format_exception(
             None,
             context.error,
@@ -97,7 +97,7 @@ def error_callback(update: Update, context: CallbackContext):
         )
         tb = "".join(tb_list)
 
-        # Full error message
+        # Gabungkan pesan error lengkap
         pretty_message = (
             f'{pretty_error}\n-------------------------------------------------------------------------------\n'
             f'An exception was raised while handling an update\n'
@@ -109,7 +109,7 @@ def error_callback(update: Update, context: CallbackContext):
             f'Full Traceback: {tb}'
         )
 
-        # Send error message to external service
+        # Unggah pesan error ke spaceb.in
         extension = "txt"
         url = "https://spaceb.in/api/v1/documents/"
         try:
@@ -117,7 +117,7 @@ def error_callback(update: Update, context: CallbackContext):
                 url, data={"content": pretty_message, "extension": extension}
             )
         except Exception as e:
-            # Handle request failure
+            # Jika permintaan gagal
             print(f"Failed to send error log: {str(e)}")
             context.bot.send_message(
                 ERROR_LOGS,
@@ -126,21 +126,23 @@ def error_callback(update: Update, context: CallbackContext):
             )
             return
 
-        # Handle response from external service
-        try:
-            response_data = response.json()  # Attempt to parse JSON
-        except requests.JSONDecodeError:
-            print(f"Invalid JSON Response: {response.text}")  # Log non-JSON response
-            response_data = None
-
-        if response_data:
-            url = f"https://spaceb.in/{response_data['payload']['id']}"
+        # Periksa apakah respons dari spaceb.in valid
+        if response.text:
+            try:
+                response_data = response.json()  # Coba parsing JSON
+                url = f"https://spaceb.in/{response_data['payload']['id']}"
+            except requests.JSONDecodeError:
+                print(f"Invalid JSON Response: {response.text}")  # Log respons non-JSON
+                url = None
         else:
+            print("Response is empty.")  # Jika respons kosong
             url = None
 
+        # Escape error message untuk HTML
         e = html.escape(f"{context.error}")
+
+        # Fallback: Jika unggahan gagal, kirim dokumen lokal
         if not url:
-            # Fallback: Save to local file if external upload fails
             with open("error.txt", "w+") as f:
                 f.write(pretty_message)
             context.bot.send_document(
@@ -151,7 +153,7 @@ def error_callback(update: Update, context: CallbackContext):
             )
             return
 
-        # Send error message to error log group
+        # Kirim pesan dengan tautan log error
         context.bot.send_message(
             ERROR_LOGS,
             text=f"#{context.error.identifier}\n<b>Your bot encountered an error:</b>\n<code>{e}</code>",
@@ -159,21 +161,6 @@ def error_callback(update: Update, context: CallbackContext):
                 [[InlineKeyboardButton("View Error Logs", url=url)]],
             ),
             parse_mode="HTML",
-        )
-        else:
-    print("Response is empty.")  # Handle empty response
-    response_data = None
-
-
-        url = f"https://spaceb.in/{response['payload']['id']}"
-        context.bot.send_message(
-            ERROR_LOGS,
-            text=f"#{context.error.identifier}\n<b>Your Cute Exon Nagisa Have An Error For You:"
-                 f"</b>\n<code>{e}</code>",
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("sᴇxʏ ᴇxᴏɴ ᴇʀʀᴏʀ ʟᴏɢs", url=url)]],
-            ),
-            parse_mode=ParseMode.HTML,
         )
 
 
