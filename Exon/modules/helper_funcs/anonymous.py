@@ -96,7 +96,7 @@ def user_admin(permission: AdminPerms):
                     return func(update, context, *args, **kwargs)
                 else:
                     return message.reply_text(
-                        f"You lack the permission: `{permission.name}`",
+                        f"Kalo bukan admin gausah gt deh ah.",
                         parse_mode=ParseMode.MARKDOWN,
                     )
 
