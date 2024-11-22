@@ -260,7 +260,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
 
             elif new_mem.id == bot.id:
                 update.effective_message.reply_text(
-                    f"ᴛʜᴀɴᴋꜱ ꜰᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ! ᴊᴏɪɴ @{AbishnoiMF} ꜰᴏʀ ꜱᴜᴘᴘᴏʀᴛ.",
+                    f"ᴛʜᴀɴᴋꜱ ꜰᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ! ᴊᴏɪɴ @{proofniyeee} ꜰᴏʀ ꜱᴜᴘᴘᴏʀᴛ.",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -388,12 +388,12 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                     f"[{escape_markdown(new_mem.first_name)}](tg://user?id={user.id})"
                 )
                 message = msg.reply_text(
-                    f"{new_join_mem}, ᴄʟɪᴄᴋ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡᴡ ᴛᴏ ᴘʀᴏᴠᴇ ʏᴏᴜ ᴀʀᴇ ʜᴜᴍᴀɴ.\nʏᴏᴜᴜ ʜᴀᴠᴇ 120 ꜱᴇᴄᴏɴᴅꜱ.",
+                    f"{new_join_mem}, Pencet coba kalo emang bener lu makhluk.\nwaktu lu 2 menit cok",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="ʏᴇꜱ, ɪ'ᴍ ʜᴜᴍᴀɴ.",
+                                    text="𝗜𝘆𝗲 𝗴𝘂𝗲 𝗼𝗿𝗮𝗻𝗴!.",
                                     callback_data=f"user_join_({new_mem.id})",
                                 )
                             ]
@@ -492,8 +492,8 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
 
                 message = msg.reply_photo(
                     fileobj,
-                    caption=f"Welcome [{escape_markdown(new_mem.first_name)}](tg://user?id={user.id}). Click the correct button to get unmuted!\n"
-                            f"You got 120 seconds for this.",
+                    caption=f"Welcome [{escape_markdown(new_mem.first_name)}](tg://user?id={user.id}). Pencet tombolnya biar ga di mute!\n"
+                            f"2 menit waktu lu cok.",
                     reply_markup=InlineKeyboardMarkup(btn),
                     parse_mode=ParseMode.MARKDOWN,
                     reply_to_message_id=reply,
@@ -569,14 +569,14 @@ def check_not_bot(
 
         try:
             bot.edit_message_text(
-                "*ᴋɪᴄᴋꜱ ᴛʜᴇ ᴜꜱᴇʀ*\nᴛʜᴇʏ ᴄᴀɴ ᴀʟᴡᴀʏꜱ ʀᴇᴊᴏɪɴ ᴀɴᴅ ᴛʀʏ.",
+                "*Tendang ni bocah*\nDoi bisa join trs coba lagi slow.",
                 chat_id=chat_id,
                 message_id=message_id,
             )
         except TelegramError:
             bot.delete_message(chat_id=chat_id, message_id=message_id)
             bot.send_message(
-                f"{mention_html(member.id, member.first_name)} ᴡᴀꜱ ᴋɪᴄᴋᴇᴅ ᴀꜱ ᴛʜᴇʏ ꜰᴀɪʟᴇᴅ ᴛᴏ ᴠᴀʀɪꜰʏ ᴛʜᴇᴍꜱᴇʟᴠᴇꜱ",
+                f"{mention_html(member.id, member.first_name)} kick yee abis gabisa buktiin kalo orang.",
                 chat_id=chat_id,
                 parse_mode=ParseMode.HTML,
             )
@@ -696,8 +696,8 @@ def welcome(update: Update, context: CallbackContext):
         noformat = True
         pref, welcome_m, cust_content, welcome_type = sql.get_welc_pref(chat.id)
         update.effective_message.reply_text(
-            f"ᴛʜɪꜱ ᴄʜᴀᴛ ʜᴀꜱ ɪᴛ's ᴡᴇʟᴄᴏᴍᴇ ꜱᴇᴛᴛɪɴɢ ꜱᴇᴛ ᴛᴏ : `{pref}`.\n"
-            f"*ᴛʜᴇ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ (ɴᴏᴛ ꜰɪʟʟɪɴɢ ᴛʜᴇ {{}}) ɪꜱ:*",
+            f"Ini ada welkam mesegnya : `{pref}`.\n"
+            f"*Nih welkam mesegnya (gabeginini {{}}) :*",
             parse_mode=ParseMode.MARKDOWN,
         )
 
@@ -745,12 +745,12 @@ def welcome(update: Update, context: CallbackContext):
         elif args[0].lower() in ("off", "no"):
             sql.set_welc_preference(str(chat.id), False)
             update.effective_message.reply_text(
-                "ɪ'ʟʟ ɢᴏ ʟᴏᴀꜰ ᴀʀʀᴏᴜɴᴅ ᴀɴᴅ ɴᴏᴛ ᴡᴇʟᴄᴏᴍᴇ ᴀɴʏᴏɴᴇ ᴛʜᴇɴ."
+                "Iya gua cabut gaakan gua sambut."
             )
 
         else:
             update.effective_message.reply_text(
-                "ɪ ᴜɴᴅᴇʀꜱᴛᴀɴᴅ 'on/yes' ᴏʀ 'off/no' ᴏɴʟʏ!"
+                "Iya paham 'on/yes' ato 'off/no' doang"
             )
 
 
@@ -764,8 +764,8 @@ def goodbye(update: Update, context: CallbackContext):
         noformat = True
         pref, goodbye_m, goodbye_type = sql.get_gdbye_pref(chat.id)
         update.effective_message.reply_text(
-            f"ᴛʜɪꜱ ᴄʜᴀᴛ ʜᴀꜱ ɪᴛ's ɢᴏᴏᴅʙʏᴇ ꜱᴇᴛᴛɪɴɢ ꜱᴇᴛ ᴛᴏ : `{pref}`.\n"
-            f"*ᴛʜᴇᴇ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ  (ɴᴏᴛ ꜰᴇᴇʟɪɴɢ ᴛʜᴇ {{}}) ɪꜱ:*",
+            f"Chat ini ada gutbey mesegnya : `{pref}`.\n"
+            f"*Gutbey mesegnya (gabenini {{}}) :*",
             parse_mode=ParseMode.MARKDOWN,
         )
 
@@ -821,17 +821,17 @@ def set_welcome(update: Update, context: CallbackContext) -> str:
     text, data_type, content, buttons = get_welcome_type(msg)
 
     if data_type is None:
-        msg.reply_text("ʏᴏᴜ ᴅɪᴅɴ'ᴛ ꜱᴘᴇᴄɪꜰʏ ᴡʜᴀᴛ ᴛᴏ ʀᴇᴘʟʏ ᴡɪᴛʜ!")
+        msg.reply_text("Belom lu isi nih mao pake ape.")
         return ""
 
     sql.set_custom_welcome(chat.id, content, text, data_type, buttons)
-    msg.reply_text("ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ꜱᴇᴛ ᴄᴜꜱᴛᴏᴍ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ!")
+    msg.reply_text("Yak berhasil buat welkam meseg")
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#SET_WELCOME\n"
-        f"<b>ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-        f"ꜱᴇᴛ ᴛʜᴇ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ."
+        f"𝗦𝗲𝘁 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝗲𝘀𝘀𝗮𝗴𝗲\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"Diatur ke welkam meseg"
     )
 
 
@@ -846,14 +846,14 @@ def reset_welcome(update: Update, context: CallbackContext) -> str:
         chat.id, None, random.choice(sql.DEFAULT_WELCOME_MESSAGES), sql.Types.TEXT
     )
     update.effective_message.reply_text(
-        "ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ʀᴇꜱᴇᴛ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇꜰᴀᴜʟᴛ!"
+        "Dah di reset ke default ye welkam mesekn ny!"
     )
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#RESET_WELCOME\n"
-        f"<b>ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-        f"ʀᴇꜱᴇᴛ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇꜰᴀᴜʟᴛ."
+        f"𝗥𝗲𝘀𝗲𝘁 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝗲𝘀𝘀𝗮𝗴𝗲\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"Reset ke default welkam meseg."
     )
 
 
@@ -867,16 +867,16 @@ def set_goodbye(update: Update, context: CallbackContext) -> str:
     text, data_type, content, buttons = get_welcome_type(msg)
 
     if data_type is None:
-        msg.reply_text("ʏᴏᴜ ᴅɪᴅɴ'ᴛ ꜱᴘᴇᴄɪꜰʏ ᴡʜᴀᴛ ᴛᴏ ʀᴇᴘʟʏ ᴡɪᴛʜ!")
+        msg.reply_text("Belom lu set kocak!")
         return ""
 
     sql.set_custom_gdbye(chat.id, content or text, data_type, buttons)
-    msg.reply_text("Successfully set custom goodbye message!")
+    msg.reply_text("Dah berhasil set gutbey meseg!")
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#SET_GOODBYE\n"
-        f"<b>ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-        f"ꜱᴇᴛ ᴛʜᴇ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ."
+        f"𝗦𝗲𝘁 𝗚𝗼𝗼𝗱𝗯𝘆𝗲\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"Diatur ke gutbey meseg."
     )
 
 
@@ -891,14 +891,14 @@ def reset_goodbye(update: Update, context: CallbackContext) -> str:
         chat.id, random.choice(sql.DEFAULT_GOODBYE_MESSAGES), sql.Types.TEXT
     )
     update.effective_message.reply_text(
-        "ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ʀᴇꜱᴇᴛ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ ᴛᴏ ᴅᴇꜰᴀᴜʟᴛ!"
+        "Dah reset ke default gutbey meseg!"
     )
 
     return (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#RESET_GOODBYE\n"
-        f"<b>ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-        f"ʀᴇꜱᴇᴛ ᴛʜᴇ ɢᴏᴏᴅʙʏᴇ ᴍᴇꜱꜱᴀɢᴇ."
+        f"𝗥𝗲𝘀𝗲𝘁 𝗚𝗼𝗼𝗱𝗯𝘆𝗲\n"
+        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"Dah di reset ke  default gutbey meseg."
     )
 
 
@@ -914,47 +914,47 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
     if len(args) >= 1:
         if args[0].lower() in ("off", "no"):
             sql.set_welcome_mutes(chat.id, False)
-            msg.reply_text("ɪ ᴡɪʟʟ ɴᴏ ʟᴏɴɢᴇʀ ᴍᴜᴛᴇ ᴘᴇᴏᴘʟᴇ ᴏɴ ᴊᴏɪɴɪɴɢ!")
+            msg.reply_text("Iye ga gue mute yang baru join!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#WELCOME_MUTE\n"
-                f"<b>• ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-                f"ʜᴀꜱ ᴛᴏɢɢʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴜᴛᴇ ᴛᴏ  <b>OFF</b>."
+                f"𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝘂𝘁𝗲\n"
+                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Diatur ke  <b>OFF</b>."
             )
         elif args[0].lower() in ["soft"]:
             sql.set_welcome_mutes(chat.id, "soft")
             msg.reply_text(
-                "ɪ ᴡɪʟʟ ʀᴇꜱᴛʀɪᴄᴛ ᴜꜱᴇʀꜱ' ᴘᴇʀᴍɪꜱꜱɪᴏɴ ᴛᴏ ꜱᴇɴᴅ ᴍᴇᴅɪᴀ ꜰᴏʀ 24 ʜᴏᴜʀꜱ."
+                "Gua batesin dulu selama 24 jam gabisa ngirim media."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#WELCOME_MUTE\n"
-                f"<b>• ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-                f"ʜᴀꜱ ᴛᴏɢɢʟᴇᴅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴜᴛᴇ ᴛᴏ <b>SOFT</b>."
+                f"𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝘂𝘁𝗲\n"
+                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Diatur ke <b>SOFT</b>."
             )
         elif args[0].lower() in ["strong"]:
             sql.set_welcome_mutes(chat.id, "strong")
             msg.reply_text(
-                "ɪ ᴡɪʟʟ ɴᴏᴡ ᴍᴜᴛᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴇɴ ᴛʜᴇʏ ᴊᴏɪɴ ᴜɴᴛɪʟ ᴛʜᴇʏ ᴘʀᴏᴠᴇ ᴛʜᴇʏ ᴀʀᴇ ɴᴏᴛ ᴀ ʙᴏᴛ.\nᴛʜᴇʏ ᴡɪʟʟ ʜᴀᴠᴇ 120 ꜱᴇᴄᴏɴᴅꜱ "
+                "Gua mute cok yang ga bisa buktiin kalo bukan bot.\nGua kasi waktu 2 menit! "
                 "before they get kicked. "
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#WELCOME_MUTE\n"
-                f"<b>• ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>STRONG</b>."
+                f"𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝘂𝘁𝗲\n"
+                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Diatur ke <b>STRONG</b>."
             )
         elif args[0].lower() in ["captcha"]:
             sql.set_welcome_mutes(chat.id, "captcha")
             msg.reply_text(
-                "ɪ ᴡɪʟʟ ɴᴏᴡ ᴍᴜᴛᴇ ᴘᴇᴏᴘʟᴇ ᴡʜᴇɴ ᴛʜᴇʏ ᴊᴏɪɴ ᴜɴᴛɪʟʟ ᴛʜᴇʏ ᴘʀᴏᴠᴇ ᴛʜᴇʏ ᴀʀᴇ ɴᴏᴛ ʙᴏᴛ.\nᴛʜᴇʏ ʜᴀᴠᴇ ᴛᴏ ꜱᴏʟᴠᴇ ᴀ "
-                "ᴄᴀᴘᴛᴄʜᴀ ᴛᴏ ɢᴇᴛ ᴜɴᴍᴜᴛᴇᴅ. "
+                "Gua mute bener gua mah kalo ga bisa nyelesain captcha.\nLu kudu selesain"
+                "captcha nya biar ga di mute cok"
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#WELCOME_MUTE\n"
-                f"<b>• ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has toggled welcome mute to <b>CAPTCHA</b>."
+                f"𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝗠𝘂𝘁𝗲\n"
+                f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Diatur ke <b>CAPTCHA</b>."
             )
         else:
             msg.reply_text(
@@ -993,21 +993,21 @@ def clean_welcome(update: Update, context: CallbackContext) -> str:
 
     if args[0].lower() in ("on", "yes"):
         sql.set_clean_welcome(str(chat.id), True)
-        update.effective_message.reply_text("I'll try to delete old welcome messages!")
+        update.effective_message.reply_text("Gue delete dlu welkam meseg yg lama")
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#CLEAN_WELCOME\n"
+            f"𝗖𝗹𝗲𝗮𝗻 𝗪𝗲𝗹𝗰𝗼𝗺𝗲\n"
             f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-            f"Has toggled clean welcomes to <code>ON</code>."
+            f"Diatur ke <code>ON</code>."
         )
     elif args[0].lower() in ("off", "no"):
         sql.set_clean_welcome(str(chat.id), False)
-        update.effective_message.reply_text("ɪ ᴡᴏɴ'ᴛ ᴅᴇʟᴇᴛᴇ ᴏʟᴅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇꜱꜱᴀɢᴇ.")
+        update.effective_message.reply_text("Gamao hapus welkam meseg yg dulu.")
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#CLEAN_WELCOME\n"
-            f"<b>ᴀᴅᴍɪɴ:</b> {mention_html(user.id, user.first_name)}\n"
-            f"Has toggled clean welcomes to <code>OFF</code>."
+            f"𝗖𝗹𝗲𝗮𝗻 𝗪𝗲𝗹𝗰𝗼𝗺𝗲\n"
+            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+            f"Diatur ke <code>OFF</code>."
         )
     else:
         update.effective_message.reply_text("I understand 'on/yes' or 'off/no' only!")
@@ -1107,7 +1107,7 @@ def user_button(update: Update, context: CallbackContext):
                     sql.set_clean_welcome(chat.id, sent.message_id)
 
     else:
-        query.answer(text="You're not allowed to do this!")
+        query.answer(text="Bukan buat lu kocak!")
 
 
 @Exoncallback(pattern=r"user_captchajoin_\([\d\-]+,\d+\)_\(\d{4}\)")
@@ -1181,16 +1181,16 @@ def user_captcha_button(update: Update, context: CallbackContext):
             except Exception:
                 pass
             kicked_msg = f"""
-            ❌ [{escape_markdown(join_usr_data.first_name)}](tg://user?id={join_user}) failed the captcha and was kicked.
+            ❌ [{escape_markdown(join_usr_data.first_name)}](tg://user?id={join_user}) gagal, gua kik yak.
             """
-            query.answer(text="Wrong answer")
+            query.answer(text="Jawaban salah woi")
             if res := chat.unban_member(join_user):
                 bot.sendMessage(
                     chat_id=chat.id, text=kicked_msg, parse_mode=ParseMode.MARKDOWN
                 )
 
     else:
-        query.answer(text="You're not allowed to do this!")
+        query.answer(text="Bukan buat lu kocak!")
 
 
 """
@@ -1340,7 +1340,7 @@ def fmt_help(update: Update, context: CallbackContext):
             [
                 [
                     InlineKeyboardButton(
-                        text="ʙᴀᴄᴋ",
+                        text="𝗕𝗮𝗹𝗶𝗸",
                         callback_data=f"help_module({__mod_name__.lower()})",
                     )
                 ]
@@ -1355,8 +1355,8 @@ def get_help(chat):
     return [
         gs(chat, "greetings_help"),
         [
-            InlineKeyboardButton(text="ᴡᴇʟᴄᴏᴍᴇᴇ ᴍᴜᴛᴇꜱ", callback_data="wlc_help_m"),
-            InlineKeyboardButton(text="ᴡᴇʟᴄᴏᴍᴇ ꜰᴏʀᴍᴀᴛᴛɪɴɢ", callback_data="wlc_help_h"),
+            InlineKeyboardButton(text="𝗪𝗲𝗹𝗸𝗮𝗺 𝗠𝘂𝘁𝗲", callback_data="wlc_help_m"),
+            InlineKeyboardButton(text="𝗪𝗲𝗹𝗸𝗮𝗺 𝗙𝗼𝗿𝗺𝗮𝘁", callback_data="wlc_help_h"),
         ],
     ]
 
