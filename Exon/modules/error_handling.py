@@ -72,11 +72,13 @@ errors = ErrorsDict()
 def error_callback(update: Update, context: CallbackContext):
     if not update:
         return
+
     if context.error not in errors:
         try:
+            # Generate the pretty error message
             stringio = io.StringIO()
             pretty_errors.output_stderr = stringio
-            output = pretty_errors.excepthook(
+            pretty_errors.excepthook(
                 type(context.error),
                 context.error,
                 context.error.__traceback__,
@@ -86,13 +88,28 @@ def error_callback(update: Update, context: CallbackContext):
             stringio.close()
         except Exception:
             pretty_error = "Failed to create pretty error."
+
+        # Generate traceback
         tb_list = traceback.format_exception(
             None,
             context.error,
             context.error.__traceback__,
         )
         tb = "".join(tb_list)
-        pretty_message = f'{pretty_error}\n-------------------------------------------------------------------------------\nAn exception was raised while handling an update\nUser: {update.effective_user.id}\nChat: {update.effective_chat.title if update.effective_chat else ""} {update.effective_chat.id if update.effective_chat else ""}\nCallback data: {update.callback_query.data if update.callback_query else "None"}\nMessage: {update.effective_message.text if update.effective_message else "No message"}\n\nFull Traceback: {tb}'
+
+        # Full error message
+        pretty_message = (
+            f'{pretty_error}\n-------------------------------------------------------------------------------\n'
+            f'An exception was raised while handling an update\n'
+            f'User: {update.effective_user.id}\n'
+            f'Chat: {update.effective_chat.title if update.effective_chat else ""} '
+            f'{update.effective_chat.id if update.effective_chat else ""}\n'
+            f'Callback data: {update.callback_query.data if update.callback_query else "None"}\n'
+            f'Message: {update.effective_message.text if update.effective_message else "No message"}\n\n'
+            f'Full Traceback: {tb}'
+        )
+
+        # Send error message to external service
         extension = "txt"
         url = "https://spaceb.in/api/v1/documents/"
         try:
@@ -100,20 +117,53 @@ def error_callback(update: Update, context: CallbackContext):
                 url, data={"content": pretty_message, "extension": extension}
             )
         except Exception as e:
-            return {"error": str(e)}
-        response = response.json()
+            # Handle request failure
+            print(f"Failed to send error log: {str(e)}")
+            context.bot.send_message(
+                ERROR_LOGS,
+                text=f"Error log upload failed: {str(e)}",
+                parse_mode="HTML",
+            )
+            return
+
+        # Handle response from external service
+        try:
+            response_data = response.json()  # Attempt to parse JSON
+        except requests.JSONDecodeError:
+            print(f"Invalid JSON Response: {response.text}")  # Log non-JSON response
+            response_data = None
+
+        if response_data:
+            url = f"https://spaceb.in/{response_data['payload']['id']}"
+        else:
+            url = None
+
         e = html.escape(f"{context.error}")
-        if not response:
+        if not url:
+            # Fallback: Save to local file if external upload fails
             with open("error.txt", "w+") as f:
                 f.write(pretty_message)
             context.bot.send_document(
                 ERROR_LOGS,
                 open("error.txt", "rb"),
-                caption=f"#{context.error.identifier}\n<b>ʏᴏᴜʀ ᴄᴜᴛᴇ ᴇxᴏɴ ʜᴀᴠᴇ ᴀɴ ᴇʀʀᴏʀ ғᴏʀ ʏᴏᴜ:"
-                        f"</b>\n<code>{e}</code>",
-                parse_mode="html",
+                caption=f"#{context.error.identifier}\n<b>Your bot encountered an error:</b>\n<code>{e}</code>",
+                parse_mode="HTML",
             )
             return
+
+        # Send error message to error log group
+        context.bot.send_message(
+            ERROR_LOGS,
+            text=f"#{context.error.identifier}\n<b>Your bot encountered an error:</b>\n<code>{e}</code>",
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("View Error Logs", url=url)]],
+            ),
+            parse_mode="HTML",
+        )
+        else:
+    print("Response is empty.")  # Handle empty response
+    response_data = None
+
 
         url = f"https://spaceb.in/{response['payload']['id']}"
         context.bot.send_message(
