@@ -62,19 +62,19 @@ from Exon.modules.log_channel import loggable
 
 def check_user(user_id: int, bot: Bot, update: Update) -> Optional[str]:
     if not user_id:
-        return "You don't seem to be referring to a user or the ID specified is incorrect.."
+        return "Ga bener lu masukin id nya, yang valid dah!"
 
     try:
         member = update.effective_chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            return "I can't seem to find this user"
+        if excp.message == "Orangnya gaada":
+            return "Gua gabisa cari orangnya kocak"
         raise
     if user_id == bot.id:
-        return "I'm not gonna MUTE myself, How high are you?"
+        return "Yakali gua mute diri sendiri, keren lu gt?"
 
     if is_user_admin(update, user_id, member) or user_id in TIGERS:
-        return "Can't. Find someone else to mute but not this one."
+        return "Gabisa cari orangnya kecuali ini"
 
     return None
 
@@ -98,13 +98,13 @@ def mute(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#MUTE\n"
+        f"𝗠𝘂𝘁𝗲\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
     )
 
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n<b>Alesan dimute:</b> {reason}"
 
     if member.can_send_messages is None or member.can_send_messages:
         chat_permissions = ChatPermissions(can_send_messages=False)
@@ -136,7 +136,7 @@ def mute(update: Update, context: CallbackContext) -> str:
             parse_mode=ParseMode.HTML,
         )
         return log
-    message.reply_text("This user is already muted!")
+    message.reply_text("Orang ini udh di mute kocak")
 
     return ""
 
@@ -159,7 +159,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
         message.reply_text(
-            "You'll need to either give me a username to unmute, or reply to someone to be unmuted."
+            "Minimal kasih username nya atoga repely chatnya buat unmute kocak."
         )
         return ""
 
@@ -167,8 +167,8 @@ def unmute(update: Update, context: CallbackContext) -> str:
 
     if member.status in ("kicked", "left"):
         message.reply_text(
-            "This user isn't even in the chat, unmuting them won't make them talk more than they "
-            "already do!",
+            "Percuma unmute kocak orang bocahnya ga disini lagi "
+            "Yang bener aje!",
         )
 
     elif (
@@ -177,7 +177,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
             and member.can_send_other_messages
             and member.can_add_web_page_previews
     ):
-        message.reply_text("This user already has the right to speak.")
+        message.reply_text("Orang ini ga dimute, salah orang wooo")
     else:
         chat_permissions = ChatPermissions(
             can_send_messages=True,
@@ -194,11 +194,11 @@ def unmute(update: Update, context: CallbackContext) -> str:
         except BadRequest:
             pass
         reply = (
-            f"Yep! Unmuted {mention_html(member.user.id, member.user.first_name)} "
+            f"Nahhh! Unmuted {mention_html(member.user.id, member.user.first_name)} "
             f"by {mention_html(user.id, user.first_name)} in <b>{message.chat.title}</b>"
         )
         if reason:
-            reply += f"Reason: {reason}"
+            reply += f"Alesannya: {reason}"
         bot.sendMessage(
             chat.id,
             reply,
@@ -206,7 +206,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
         )
         return (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#UNMUTE\n"
+            f"𝗨𝗻𝗺𝘂𝘁𝗲\n"
             f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
             f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
         )
@@ -232,7 +232,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
     member = chat.get_member(user_id)
 
     if not reason:
-        message.reply_text("You haven't specified a time to mute this user for!")
+        message.reply_text("Kasih waktu yg bener kalo mau mute orang!")
         return ""
 
     split_reason = reason.split(None, 1)
@@ -246,13 +246,13 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#TEMP MUTED\n"
+        f"𝗧𝗲𝗺𝗽 𝗠𝘂𝘁𝗲\n"
         f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}\n"
-        f"<b>Time:</b> {time_val}"
+        f"<b>Waktu:</b> {time_val}"
     )
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n<b>Alesannya:</b> {reason}"
 
     try:
         if member.can_send_messages is None or member.can_send_messages:
@@ -264,7 +264,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 until_date=mutetime,
             )
             msg = (
-                f"Yep! Temporary Muted {mention_html(member.user.id, member.user.first_name)} from talking for <code>{time_val}</code> in {chat.title}\n"
+                f"Nahhh! Temporary Muted {mention_html(member.user.id, member.user.first_name)} from talking for <code>{time_val}</code> in {chat.title}\n"
                 f"by {mention_html(user.id, html.escape(user.first_name))}",
             )
 
@@ -286,12 +286,12 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
             )
 
             return log
-        message.reply_text("This user is already muted.")
+        message.reply_text("Orang ini udah di mute kocak!")
 
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Bales pesan buat":
             # Do not reply
-            message.reply_text(f"Muted for {time_val}!", quote=False)
+            message.reply_text(f"Di mute lu {time_val}!", quote=False)
             return log
         LOGGER.warning(update)
         LOGGER.exception(
@@ -301,7 +301,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
             chat.id,
             excp.message,
         )
-        message.reply_text("Well damn, I can't mute that user.")
+        message.reply_text("Fak gua gabisa mute orang itu cok.")
 
     return ""
 
@@ -336,19 +336,19 @@ def button(update: Update, context: CallbackContext) -> str:
                 chat.id, int(user_id), chat_permissions
         ):
             update.effective_message.edit_text(
-                f"Yep! User {mention_html(member.user.id, member.user.first_name)} can start talking again in {chat.title}!",
+                f"Nahhh! User {mention_html(member.user.id, member.user.first_name)} udah bisa bacot lg di {chat.title}!",
                 parse_mode=ParseMode.HTML,
             )
             query.answer("Unmuted!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#UNMUTE\n"
+                f"𝗨𝗻𝗺𝘂𝘁𝗲\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
             )
     else:
         update.effective_message.edit_text(
-            "This user is not muted or has left the group!"
+            "Orang ini ga di mute, keknya udh cabut dr gc ini!"
         )
         return ""
 
