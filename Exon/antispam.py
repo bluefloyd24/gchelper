@@ -168,7 +168,7 @@ def detect_user(user_id, chat_id, message, parsing_date):
                     dispatcher.bot.kickChatMember(chat_id, user_id)
                     dispatcher.bot.sendMessage(
                         chat_id,
-                        "I'ᴠᴇ ʙᴀɴɴᴇᴅ ᴛʜᴇᴍ!",
+                        "Udeh gue banner doi!",
                         reply_to_message_id=message.message_id,
                     )
                     return True
@@ -177,13 +177,13 @@ def detect_user(user_id, chat_id, message, parsing_date):
             if message.chat.type != "private":
                 dispatcher.bot.sendMessage(
                     chat_id,
-                    "ғʟᴏᴏᴅ ᴍᴇssᴀɢᴇ ᴡᴀs ᴅᴇᴛᴇᴄᴛᴇᴅ!\nI'ᴍ ᴏᴜᴛ, ɪɴᴠɪᴛᴇ ᴍᴇ ᴀɢᴀɪɴ ɪғ ᴛʜᴇ ғʟᴏᴏᴅ ʜᴀs sᴛᴏᴘᴘᴇᴅ 🙂\n\nᴛʜᴀɴᴋs",
+                    "Grupnye banjir cok!\nGua cabut duls, kalo udh ga banjir invite lg aja\n\nMakasieee",
                 )
                 dispatcher.bot.leaveChat(chat_id)
                 return True
         dispatcher.bot.sendMessage(
             chat_id,
-            "ʜᴇɪ! sᴍᴀʀᴛ ᴀɴᴛɪғʟᴏᴏᴅ ᴡᴀs ᴅᴇᴛᴇᴄᴛᴇᴅ ғᴏʀ ᴛʜɪs ᴜsᴇʀ!\n\nʏᴏᴜ ᴡɪʟʟ ʙᴇ ʀᴇsᴛʀɪᴄᴛᴇᴅ ғᴏʀ ᴀ ᴡʜɪʟᴇ.\n\nɪғ ʏᴏᴜ sᴛɪʟʟ ᴄᴏɴᴛɪɴᴜᴇs ɪ ᴡɪʟʟ ʙᴀɴ ᴀɴᴅ ᴄʀᴇᴀᴛᴇ ᴀ sᴘᴀᴍ ʀᴇᴘᴏʀᴛ ғᴏʀ ᴛʜɪs ᴜsᴇʀ!",
+            "Ooi, anti banjir di user ini aktip\nLu bakal di batesin sementara.\n\nKalo lu masih maksa liat aje gua bikin spam report biar di banned lu cok!",
             reply_to_message_id=message.message_id,
         )
         return True
