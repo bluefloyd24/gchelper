@@ -4,7 +4,7 @@ from Exon import telethn
 
 
 def register(**args):
-    """ʀᴇɢɪsᴛᴇʀs ᴀ ɴᴇᴡ ᴍᴇssᴀɢᴇ."""
+    """Daftar buat pesan baru."""
     pattern = args.get("pattern")
 
     r_pattern = r"^[/!]"
