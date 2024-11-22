@@ -50,40 +50,40 @@ def ABG_about_callback(update, context):
     query = update.callback_query
     if query.data == "ABG_":
         query.message.edit_text(
-            text=f"๏ ɪ'ᴍ {BOT_NAME} ,ᴀ ᴘᴏᴡᴇʀғᴜʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ʙᴜɪʟᴛ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴇᴀsɪʟʏ."
-                 "\n• I scan ʀᴇsᴛʀɪᴄᴛ ᴜsᴇʀs."
-                 "\n• I ᴄᴀɴ ɢʀᴇᴇᴛ ᴜsᴇʀs ᴡɪsh ᴄᴜsᴛᴏᴍɪᴢᴀʙʟᴇ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇs ᴀɴᴅ ᴇᴠᴇɴ sᴇᴛ ᴀ ɢʀᴏᴜᴘ's ʀᴜʟᴇs."
-                 "\n• I ʜᴀᴠᴇ ᴀɴ ᴀᴅᴠᴀɴᴄᴇᴅ ᴀɴᴛɪ-ғʟᴏᴏᴅ sʏsᴛᴇᴍ."
-                 "\n• I ᴄᴀɴ ᴡᴀʀɴ ᴜsᴇʀs ᴜɴsɪʟ ᴛʜᴇʏ ʀᴇᴀᴄʜ ᴍᴀx ᴡᴀʀɴx, ᴡɪᴛʜ ᴇᴀᴄʜ ᴘʀᴇᴅᴇғɪɴᴇᴅ ᴀᴄᴛɪᴏɴs sᴜᴄʜ ᴀs ʙᴀɴ, ᴍᴜᴛᴇ, ᴋɪᴄᴋ, ᴇᴛᴄ."
-                 "\n• I ʜᴀᴠᴇ ᴀ ɴᴏᴛᴇ ᴋᴇᴇᴘɪɴɢ sʏsᴛᴇᴍ, ʙʟᴀᴄᴋʟɪsᴛs, ᴀɴᴅ ᴇᴠᴇɴ ᴘʀᴇᴅᴇᴛᴇʀᴍɪɴᴇᴅ ʀᴇᴘʟɪᴇs ᴏɴ ᴄᴇʀᴛᴀɪɴ ᴋᴇʏᴡᴏʀᴅs."
-                 "\n• I ᴄʜᴇᴄᴋ ғᴏʀ ᴀᴅᴍɪɴs ᴘᴇʀᴍɪssɪᴏɴs ʙᴇғᴏʀᴇ ᴇxᴇᴄᴜᴛɪɴɢ ᴀɴʏ ᴄᴏᴍᴍᴀɴᴅ ᴀɴᴅ ᴍᴏʀᴇ sᴛᴜғғs"
-                 "\n\n_Exᴏɴ ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ GNU ɢᴇɴᴇʀᴀʟ ᴘᴜʙʟɪᴄ ʟɪᴄᴇɴsᴇ v3.0_"
-                 "\n\n*ᴄʟɪᴄᴋ ᴏɴ ʙᴜᴛᴛᴏɴ ʙᴇʟʟᴏᴡ ᴛᴏ ɢᴇᴛ ʙᴀsɪᴄ ʜᴇʟᴘ ғᴏʀ ᴇxᴏɴʀᴏʙᴏᴛ*.",
+            text=f"๏ Gue {BOT_NAME} , lu pada bisa pake gua buat ngatur grup lu biar ga ribet"
+                 "\n•  buat mantau user yang dibatesin"
+                 "\n•  bisa bikin welkam meseg buat yang baru dateng, trus bisa buat atutan grup"
+                 "\n•  gue ini keren pokoknya, anti banjir kalo bahasa org tele"
+                 "\n•  gue bisa nganuin member yang ngeyel, ban kik mute apalah pokoknya bisak"
+                 "\n•  gua punya beberapa note buat blacklist, nyimpen setting, sama beberapa perintah"
+                 "\n•  sebelom lu nyuruh gue, gue liat dulu grup lu ngasih akses buat gua kaga"
+                 "\n\n_Gue udah punya lisensi yang akurat dah pokoknya di tele"
+                 "\n\n*Pencet aja kalo kepo sama gueeheheheehe*.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="ᴀᴅᴍɪɴs", callback_data="ABG_admin"),
-                        InlineKeyboardButton(text="ɴᴏᴛᴇs", callback_data="ABG_notes"),
+                        InlineKeyboardButton(text="𝗔𝗱𝗺𝗶𝗻", callback_data="ABG_admin"),
+                        InlineKeyboardButton(text="𝗡𝗼𝘁𝗲𝘀", callback_data="ABG_notes"),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴘᴘᴏʀᴛ", callback_data="ABG_support"
+                            text="𝗦𝘂𝗽𝗽𝗼𝗿𝘁", callback_data="ABG_support"
                         ),
                         InlineKeyboardButton(
-                            text="ᴄʀᴇᴅɪᴛs", callback_data="ABG_credit"
+                            text="𝗖𝗿𝗲𝗱𝗶𝘁", callback_data="ABG_credit"
                         ),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="sᴏᴜʀᴄᴇ",
+                            text="𝗦𝗼𝘂𝗿𝗰𝗲",
                             callback_data="source_",
                         ),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ɢᴏ ʙᴀᴄᴋ", callback_data="start_back"
+                            text="𝗕𝗮𝗹𝗶𝗸", callback_data="start_back"
                         ),
                     ],
                 ]
@@ -92,17 +92,17 @@ def ABG_about_callback(update, context):
 
     elif query.data == "ABG_admin":
         query.message.edit_text(
-            text=f"━━━━━━━ *ᴀᴅᴍɪɴ* ━━━━━━━\nʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ғᴏʀ ᴛʜᴇ 𝙼ᴜsɪᴄ ᴍᴏᴅᴜʟᴇ\n⍟*ᴀᴅᴍɪɴ*\nᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜᴇsᴇ ᴄᴏᴍᴍᴀɴᴅs\n/pause/n»ᴩᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴏɴɢᴏɪɴɢ sᴛʀᴇᴀᴍ.\n/resume\n» ʀᴇsᴜᴍᴇᴅ ᴛʜᴇ ᴩᴀᴜsᴇᴅ sᴛʀᴇᴀᴍ.\n/skip ᴏʀ /next\n»sᴋɪᴩ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴏɴɢᴏɪɴɢ sᴛʀᴇᴀᴍ.\n/end ᴏʀ /stop\n» ᴇɴᴅ ᴛʜᴇ ᴄᴜʀᴇᴇɴᴛ ᴏɴɢᴏɪɴ sᴛʀᴇᴀᴍ.\n⍟*ᴀᴜᴛʜ*\nᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴀᴜᴛʜ/ᴜɴᴀᴜᴛʜ ᴀɴʏ ᴜsᴇʀ\n• ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ᴄᴀɴ sᴋɪᴩ, ᴩᴀᴜsᴇ, ʀᴇsᴜᴍᴇ ᴀɴᴅ ᴇɴᴅ ᴛʜᴇ sᴛʀᴇᴀᴍ ᴡɪᴛʜᴏᴜᴛ ᴀᴅᴍɪɴ ʀɪɢʜᴛs./n/auth ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ᴍᴇssᴀɢᴇ\n» ᴀᴅᴅ ᴀ ᴜsᴇʀ ᴛᴏ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ʟɪsᴛ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴩ.\n/unauth ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ᴍᴇssᴀɢᴇ \n» ʀᴇᴍᴏᴠᴇs ᴛʜᴇ ᴜsᴇʀ ғʀᴏᴍ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ʟɪsᴛ.\n/authusers \n» sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ᴏғ ᴛʜᴇ ɢʀᴏᴜᴩ.\n⍟*ᴘʟᴀʏ*\nᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴩʟᴀʏ sᴏɴɢs\n/play <sᴏɴɢ ɴᴀᴍᴇ/ʏᴛ ᴜʀʟ>\n» sᴛᴀʀᴛs ᴩʟᴀʏɪɴɢ ᴛʜᴇ ʀᴇǫᴜᴇsᴛᴇᴅ sᴏɴɢ ᴏɴ ᴠᴄ.!",
+            text=f"━━━━━━━ *ᴀᴅᴍɪɴ* ━━━━━━━\nʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ғᴏʀ ᴛʜᴇ 𝙼ᴜsɪᴄ ᴍᴏᴅᴜʟᴇ\n⍟*ᴀᴅᴍɪɴ*\nᴏɴʟʏ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜᴇsᴇ ᴄᴏᴍᴍᴀɴᴅs\n/pause /n»ᴩᴀᴜsᴇ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴏɴɢᴏɪɴɢ sᴛʀᴇᴀᴍ.\n/resume\n» ʀᴇsᴜᴍᴇᴅ ᴛʜᴇ ᴩᴀᴜsᴇᴅ sᴛʀᴇᴀᴍ.\n/skip ᴏʀ /next\n»sᴋɪᴩ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ᴏɴɢᴏɪɴɢ sᴛʀᴇᴀᴍ.\n/end ᴏʀ /stop\n» ᴇɴᴅ ᴛʜᴇ ᴄᴜʀᴇᴇɴᴛ ᴏɴɢᴏɪɴ sᴛʀᴇᴀᴍ.\n⍟*ᴀᴜᴛʜ*\nᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴀᴜᴛʜ/ᴜɴᴀᴜᴛʜ ᴀɴʏ ᴜsᴇʀ\n• ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ᴄᴀɴ sᴋɪᴩ, ᴩᴀᴜsᴇ, ʀᴇsᴜᴍᴇ ᴀɴᴅ ᴇɴᴅ ᴛʜᴇ sᴛʀᴇᴀᴍ ᴡɪᴛʜᴏᴜᴛ ᴀᴅᴍɪɴ ʀɪɢʜᴛs./n/auth ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ᴍᴇssᴀɢᴇ\n» ᴀᴅᴅ ᴀ ᴜsᴇʀ ᴛᴏ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ʟɪsᴛ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴩ.\n/unauth ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ᴍᴇssᴀɢᴇ \n» ʀᴇᴍᴏᴠᴇs ᴛʜᴇ ᴜsᴇʀ ғʀᴏᴍ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ʟɪsᴛ.\n/authusers \n» sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜsᴇʀs ᴏғ ᴛʜᴇ ɢʀᴏᴜᴩ.\n⍟*ᴘʟᴀʏ*\nᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ᴩʟᴀʏ sᴏɴɢs\n/play <sᴏɴɢ ɴᴀᴍᴇ/ʏᴛ ᴜʀʟ>\n» sᴛᴀʀᴛs ᴩʟᴀʏɪɴɢ ᴛʜᴇ ʀᴇǫᴜᴇsᴛᴇᴅ sᴏɴɢ ᴏɴ ᴠᴄ.!",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="🏡", callback_data="start_back"),
-                        InlineKeyboardButton(text="🛡️", callback_data="AsuX_help"),
-                        InlineKeyboardButton(text="💳", callback_data="ABG_credit"),
-                        InlineKeyboardButton(text="🕹️", callback_data="source_"),
-                        InlineKeyboardButton(text="🖥️", callback_data="help_back"),
+                        InlineKeyboardButton(text="👻", callback_data="start_back"),
+                        InlineKeyboardButton(text="🚀️", callback_data="AsuX_help"),
+                        InlineKeyboardButton(text="💵", callback_data="ABG_credit"),
+                        InlineKeyboardButton(text="📎️", callback_data="source_"),
+                        InlineKeyboardButton(text="⬅️️", callback_data="help_back"),
                     ]
                 ]
             ),
@@ -116,26 +116,26 @@ def ABG_about_callback(update, context):
                  f"\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ sᴇᴛ ʙᴜᴛᴛᴏɴs ғᴏʀ ɴᴏᴛᴇs ᴀɴᴅ ғɪʟᴛᴇʀs (ʀᴇғᴇʀ ʜᴇʟᴘ ᴍᴇɴᴜ)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="ABG_")]]
+                [[InlineKeyboardButton(text="𝗕𝗮𝗹𝗶𝗸", callback_data="ABG_")]]
             ),
         )
     elif query.data == "ABG_support":
         query.message.edit_text(
             text=f"*๏ {BOT_NAME} sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛs*"
-                 "\nᴊᴏɪɴ ᴍʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ ғᴏʀ sᴇᴇ ᴏʀ ʀᴇᴘᴏʀᴛ ᴀ ᴘʀᴏʙʟᴇᴍ ᴏɴ ᴇxᴏɴ",
+                 "\nᴊᴏɪɴ ᴍʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ ғᴏʀ sᴇᴇ ᴏʀ ʀᴇᴘᴏʀᴛ ᴀ ᴘʀᴏʙʟᴇᴍ ᴏɴ BLUE",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴘᴘᴏʀᴛ", url=f"t.me/{SUPPORT_CHAT}"
+                            text="𝗦𝘂𝗽𝗽𝗼𝗿𝘁", url=f"t.me/{SUPPORT_CHAT}"
                         ),
                         InlineKeyboardButton(
-                            text="ᴜᴘᴅᴀᴛᴇs", url="https://t.me/Abishnoi_bots"
+                            text="𝗨𝗽𝗱𝗮𝘁𝗲", url="https://t.me/yzigot"
                         ),
                     ],
                     [
-                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="ABG_"),
+                        InlineKeyboardButton(text="𝗕𝗮𝗹𝗶𝗸", callback_data="ABG_"),
                     ],
                 ]
             ),
@@ -144,9 +144,9 @@ def ABG_about_callback(update, context):
     elif query.data == "ABG_credit":  # Credit  i hope edit nai hoga
         query.message.edit_text(
             text=f"━━━━━━━ *ᴄʀᴇᴅɪᴛ* ━━━━━━━"
-                 "\n🛡️ *ᴄʀᴇᴅɪᴛ ꜰᴏʀ ᴇxᴏɴ ʀᴏʙᴏᴛ* 🛡️"
+                 "\n🛡️ *ᴄʀᴇᴅɪᴛ ꜰᴏʀ 𝗕𝗟𝗨𝗘 𝗥𝗢𝗕𝗢𝗧* 🛡️"
                  "\n\nʜᴇʀᴇ ɪꜱ ᴛʜᴇ ᴅᴇᴠᴇʟᴏᴘᴇʀ ᴀɴᴅ"
-                 f"\nꜱᴘᴏɴꜱᴏʀ ᴏꜰ [{BOT_NAME}](t.me/Exon_Robot)"
+                 f"\nꜱᴘᴏɴꜱᴏʀ ᴏꜰ [{BOT_NAME}](t.me/bluehelp_bot)"
                  "\n\nʜᴇ ꜱᴘᴇɴᴛ ᴀ ʟᴏᴛ ᴏꜰ ᴛɪᴍᴇ ꜰᴏʀ"
                  f"\nᴍᴀᴋɪɴɢ [{BOT_NAME}](t.me/{OWNER_USERNAME}) ᴀ"
                  "\nꜱᴜᴘᴇʀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ",
@@ -155,18 +155,18 @@ def ABG_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="🏡", callback_data="start_back"),
-                        InlineKeyboardButton(text="🛡️", callback_data="ABG_admin"),
-                        InlineKeyboardButton(text="💳", callback_data="AsuX_help"),
-                        InlineKeyboardButton(text="🧑‍", callback_data="source_"),
-                        InlineKeyboardButton(text="🖥️", callback_data="help_back"),
+                        InlineKeyboardButton(text="👻", callback_data="start_back"),
+                        InlineKeyboardButton(text="🚀️", callback_data="ABG_admin"),
+                        InlineKeyboardButton(text="💵", callback_data="AsuX_help"),
+                        InlineKeyboardButton(text="📎‍", callback_data="source_"),
+                        InlineKeyboardButton(text="⬅️️", callback_data="help_back"),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ᴀʙɪsʜɴᴏɪ", url="https://t.me/AshokShau"
+                            text="𝗕𝗹𝘂𝗲'𝘀", url="https://t.me/proofniyeee"
                         ),
                         InlineKeyboardButton(
-                            text="ᴄʜᴀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+                            text="𝗖𝗵𝗮𝘁", url=f"https://t.me/{SUPPORT_CHAT}"
                         ),
                     ],
                 ]
@@ -188,27 +188,27 @@ def Source_about_callback(update, context):
 [ᴩʏᴛʜᴏɴ-ᴛᴇʟᴇɢʀᴀᴍ-ʙᴏᴛ](https://github.com/python-telegram-bot/python-telegram-bot)
 ᴀɴᴅ ᴜsɪɴɢ [sǫʟᴀʟᴄʜᴇᴍʏ](https://www.sqlalchemy.org) ᴀɴᴅ [ᴍᴏɴɢᴏ](https://cloud.mongodb.com) ᴀs ᴅᴀᴛᴀʙᴀsᴇ.
 
-*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [{BOT_NAME}](https://github.com/AshokShau/ExonRobot)
+*ʜᴇʀᴇ ɪs ᴍʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ :* [{BOT_NAME}](https://github.com/bluefloyd24/helper)
 
 
-ᴇxᴏɴ ʀᴏʙᴏᴛ ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/Abishnoi69/ExonRobot/blob/master/LICENSE).
-© 2022 - 2023 [sᴜᴘᴘᴏʀᴛ](https://t.me/{SUPPORT_CHAT}) ᴄʜᴀᴛ, ᴀʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.
+𝗕𝗹𝘂𝗲 ʀᴏʙᴏᴛ ɪs ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ᴛʜᴇ [ᴍɪᴛ ʟɪᴄᴇɴsᴇ](https://github.com/bluefloyd24/helper/blob/master/LICENSE).
+© 2024 [sᴜᴘᴘᴏʀᴛ](https://t.me/{SUPPORT_CHAT}) ᴄʜᴀᴛ, ᴀʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ.
 """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="🏡", callback_data="start_back"),
-                        InlineKeyboardButton(text="🛡️", callback_data="ABG_admin"),
-                        InlineKeyboardButton(text="💳", callback_data="ABG_credit"),
-                        InlineKeyboardButton(text="🧑‍", url=f"tg://user?id={OWNER_ID}"),
-                        InlineKeyboardButton(text="🖥️", callback_data="help_back"),
+                        InlineKeyboardButton(text="👻", callback_data="start_back"),
+                        InlineKeyboardButton(text="🚀️", callback_data="ABG_admin"),
+                        InlineKeyboardButton(text="💵", callback_data="ABG_credit"),
+                        InlineKeyboardButton(text="📎‍", url=f"tg://user?id={OWNER_ID}"),
+                        InlineKeyboardButton(text="⬅️️", callback_data="help_back"),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ꜱᴏᴜʀᴄᴇ",
-                            url="https://github.com/Abishnoi69/ExonRobot",  # DON'T CHANGE
+                            text="𝗦𝗼𝘂𝗿𝗰𝗲",
+                            url="https://github.com/Bluefloyd24/helper",  # DON'T CHANGE
                         ),
                     ],
                 ]
