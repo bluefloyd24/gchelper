@@ -57,7 +57,7 @@ def ABG_about_callback(update, context):
                  "\n•  gue bisa nganuin member yang ngeyel, ban kik mute apalah pokoknya bisak"
                  "\n•  gua punya beberapa note buat blacklist, nyimpen setting, sama beberapa perintah"
                  "\n•  sebelom lu nyuruh gue, gue liat dulu grup lu ngasih akses buat gua kaga"
-                 "\n\n_Gue udah punya lisensi yang akurat dah pokoknya di tele"
+                 "\n\n_Gue udah punya lisensi yang akurat dah pokoknya di tele_"
                  "\n\n*Pencet aja kalo kepo sama gueeheheheehe*.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
