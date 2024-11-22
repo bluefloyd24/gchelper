@@ -93,34 +93,34 @@ def ban(
                 sender_chat_id=message.reply_to_message.sender_chat.id,
         ):
             message.reply_text(
-                f"Finally! Channel {html.escape(message.reply_to_message.sender_chat.title)} was banned successfully from {html.escape(chat.title)}\n\n💡 He can only write with his profile but not through other channels.",
+                f"Nahhh! Channel {html.escape(message.reply_to_message.sender_chat.title)} dah berhasil di banned dari {html.escape(chat.title)}\n dia cuma bisa chat pake akun nya sendiri ga lewat channel skrg.",
                 parse_mode="html",
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#BANNED\n"
+                f"𝗕𝗮𝗻𝗻𝗲𝗱\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<b>Channel:</b> {html.escape(message.reply_to_message.sender_chat.title)} ({message.reply_to_message.sender_chat.id})"
             )
-        message.reply_text("Failed to ban channel")
+        message.reply_text("Gagal banned cannelnya cok")
         return
 
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Gua rasa itu mah pengguna")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "Orangnya ga ketemu":
             raise
 
-        message.reply_text("Can't seem to find this person.")
+        message.reply_text("Keknya gabisa nyari orang itu.")
         return log_message
     if user_id == context.bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_text("Ban gua sendiri? kocak lu")
         return log_message
 
     if is_user_ban_protected(update, user_id, member) and user not in DEV_USERS:
@@ -174,11 +174,11 @@ def ban(
 
         # context.bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
-            f"Yep! Banned {mention_html(member.user.id, html.escape(member.user.first_name))} from {chat.title}\n"
+            f"Nah! Mampus gua Banned lu cok {mention_html(member.user.id, html.escape(member.user.first_name))} dari {chat.title}\n"
             f"By {mention_html(user.id, html.escape(user.first_name))}"
         )
         if reason:
-            reply += f"\nReason: {html.escape(reason)}"
+            reply += f"\nAlesannya: {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -200,7 +200,7 @@ def ban(
         return log
 
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Balesannya ga ketemu":
             # Do not reply
             if silent:
                 return log
@@ -214,7 +214,7 @@ def ban(
             chat.id,
             excp.message,
         )
-        message.reply_text("Well damn, I can't ban that user.")
+        message.reply_text("Ajg gua gabisa banned orang ini")
 
     return ""
 
@@ -235,26 +235,26 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("Dude! at least refer some user to ban...")
+        message.reply_text("Minimal reply orang yg mao di ban lol")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "Orangnya ga ketemu":
             raise
-        message.reply_text("I can't seem to find this user.")
+        message.reply_text("Keknya gaketemu orangnya.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?")
+        message.reply_text("Yakali ban diri sendiri kocak")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member):
-        message.reply_text("I don't feel like it.")
+        message.reply_text("Ga gua ga gitu")
         return log_message
 
     if not reason:
-        message.reply_text("You haven't specified a time to ban this user for!")
+        message.reply_text("Kasih waktu kalo mau banned orangnya pake timer")
         return log_message
 
     split_reason = reason.split(None, 1)
@@ -268,24 +268,24 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        "#TEMP BANNED\n"
+        "𝗧𝗲𝗺𝗽 𝗕𝗮𝗻𝗻𝗲𝗱\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}\n"
-        f"<b>Time:</b> {time_val}"
+        f"<b>Waktu:</b> {time_val}"
     )
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n<b>Alesannya:</b> {reason}"
 
     try:
         chat.ban_member(user_id, until_date=bantime)
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
 
         reply_msg = (
-            f"Yep! Temporary Banned {mention_html(member.user.id, html.escape(member.user.first_name))} from {chat.title}\n"
+            f"Nahhh! Di banned bentar {mention_html(member.user.id, html.escape(member.user.first_name))} dari {chat.title}\n"
             f"By {mention_html(user.id, html.escape(user.first_name))}"
         )
         if reason:
-            reply_msg += f"\nReason: {html.escape(reason)}"
+            reply_msg += f"\nAlesannya: {html.escape(reason)}"
 
         bot.sendMessage(
             chat.id,
@@ -307,10 +307,10 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         return log
 
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Balesannya ga ketemu":
             # Do not reply
             message.reply_text(
-                f"Banned! User will be banned for {time_val}.", quote=False
+                f"Banned! ni org bakal di banned selama {time_val}.", quote=False
             )
             return log
         LOGGER.warning(update)
@@ -321,7 +321,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
             chat.id,
             excp.message,
         )
-        message.reply_text("Well damn, I can't ban that user.")
+        message.reply_text("Bajigur, gabisa ban dia cok.")
 
     return log_message
 
@@ -344,7 +344,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             if not is_user_admin(update, int(user.id)):
                 bot.answer_callback_query(
                     query.id,
-                    text="You don't have enough rights to unmute people",
+                    text="Siapa lu main ban ban aje kocak, admin bukan hadeh",
                     show_alert=True,
                 )
                 return ""
@@ -356,8 +356,8 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
                 pass
 
             dick = (
-                f"Yep! Unbanned {mention_html(member.user.id, html.escape(member.user.first_name))} from {chat.title}\n"
-                f"Unbanned By: {mention_html(user.id, html.escape(user.first_name))}"
+                f"Nahhh! dah di unban {mention_html(member.user.id, html.escape(member.user.first_name))} dari {chat.title}\n"
+                f"unban By: {mention_html(user.id, html.escape(user.first_name))}"
             )
             chat.unban_member(user_id)
             query.message.edit_text(
@@ -367,7 +367,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
             bot.answer_callback_query(query.id, text="Unbanned!")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
-                f"#UNBANNED\n"
+                f"𝗨𝗻𝗯𝗮𝗻𝗻𝗲𝗱\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}"
             )
@@ -376,7 +376,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         if not is_user_admin(update, int(user.id)):
             bot.answer_callback_query(
                 query.id,
-                text="You don't have enough rights to delete this message.",
+                text="gausah delete2 deh, bukan admin lu.",
                 show_alert=True,
             )
             return ""
@@ -401,43 +401,43 @@ def punch(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Keknya bukan pengguna itu")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "Orangnya ga ketemu":
             raise
 
-        message.reply_text("I can't seem to find this user.")
+        message.reply_text("Keknya ga ketemu orangnya")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Yeahhh I'm not gonna do that.")
+        message.reply_text("Ga lah yakali gua lakuin itu")
         return log_message
 
     if is_user_ban_protected(update, user_id):
-        message.reply_text("I really wish I could punch this user....")
+        message.reply_text("Pengen banget gua tendang orang ini cok")
         return log_message
 
     if res := chat.unban_member(user_id):
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         bot.sendMessage(
             chat.id,
-            f"One kicked! {mention_html(member.user.id, html.escape(member.user.first_name))}.",
+            f"Nih gua kik! {mention_html(member.user.id, html.escape(member.user.first_name))}.",
             parse_mode=ParseMode.HTML,
         )
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#KICKED\n"
+            f"𝗞𝗶𝗰𝗸𝗲𝗱\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
             f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
         )
         if reason:
-            log += f"\n<b>Reason:</b> {reason}"
+            log += f"\n<b>Alesannya:</b> {reason}"
 
         return log
-    message.reply_text("Well damn, I can't punch that user.")
+    message.reply_text("Ajg gabisa kick doi.")
 
     return log_message
 
@@ -447,13 +447,13 @@ def punch(update: Update, context: CallbackContext) -> str:
 def punchme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update, user_id):
-        update.effective_message.reply_text("I wish I could... but you're an admin.")
+        update.effective_message.reply_text("Ajg dia admin jadi gabisa gua kik wkwk")
         return
 
     if res := update.effective_chat.unban_member(user_id):
-        update.effective_message.reply_text("*punches you out of the group*")
+        update.effective_message.reply_text("Gua lempar dr grup")
     else:
-        update.effective_message.reply_text("Huh? I can't :/")
+        update.effective_message.reply_text("Ah gabisa gua")
 
 
 @connection_status
@@ -478,44 +478,44 @@ def unban(update: Update, context: CallbackContext) -> Optional[str]:
                 parse_mode="html",
             )
         else:
-            message.reply_text("Failed to unban channel")
+            message.reply_text("Gagal unban channel cok")
         return
 
     user_id, reason = extract_user_and_text(message, args)
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Keknya itu mah orang.")
         return log_message
 
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message != "User not found":
+        if excp.message != "Orangnya ga ketemyu":
             raise
-        message.reply_text("I can't seem to find this user.")
+        message.reply_text("Keknya ga ketemu orangnya.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("How would I unban myself if I wasn't here...?")
+        message.reply_text("Gimana caranya gua unban diri sendiri kl gua disini")
         return log_message
 
     if is_user_in_chat(chat, user_id):
-        message.reply_text("Isn't this person already here??")
+        message.reply_text("Bukannya orangnya disini?")
         return log_message
 
     chat.unban_member(user_id)
     message.reply_text(
-        f"Yep! Unbanned {mention_html(member.user.id, html.escape(member.user.first_name))} from {chat.title}\n"
+        f"Nahhh! dah di Unbanned {mention_html(member.user.id, html.escape(member.user.first_name))} dari {chat.title}\n"
         f"Unbanned By: {mention_html(user.id, html.escape(user.first_name))}!",
         parse_mode=ParseMode.HTML,
     )
 
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#UNBANNED\n"
+        f"𝗨𝗻𝗯𝗮𝗻𝗻𝗲𝗱\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
     if reason:
-        log += f"\n<b>Reason:</b> {reason}"
+        log += f"\n<b>Alesannya:</b> {reason}"
 
     return log
 
