@@ -79,8 +79,8 @@ def set_lang(update: Update, _) -> None:
     keyb.append(
         [
             InlineKeyboardButton(
-                text="ʜᴇʟᴘ ᴜs ɪɴ ᴛʀᴀɴsʟᴀᴛɪᴏɴs",
-                url="https://github.com/Abishnoi69/ExonRobot",  # plz. Don't edit and change
+                text="Help?",
+                url="https://t.me/blque",  # plz. Don't edit and change
             )
         ]
     )
