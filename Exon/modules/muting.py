@@ -104,17 +104,17 @@ def mute(update: Update, context: CallbackContext) -> str:
     )
 
     if reason:
-        log += f"\n<b>Alesan dimute:</b> {reason}"
+        log += f"\n<b>Alesannya:</b> {reason}"
 
     if member.can_send_messages is None or member.can_send_messages:
         chat_permissions = ChatPermissions(can_send_messages=False)
         bot.restrict_chat_member(chat.id, user_id, chat_permissions)
         msg = (
-            f"Yep! Muted {mention_html(member.user.id, member.user.first_name)} for talking in {chat.title}\n"
+            f"Dah di mute si kocak ini {mention_html(member.user.id, member.user.first_name)}, gabisa ngirim ape2 lagi di {chat.title}\n"
             f"by {mention_html(user.id, html.escape(user.first_name))}"
         )
         if reason:
-            msg += f"\nReason: {html.escape(reason)}"
+            msg += f"\nAlesannya: {html.escape(reason)}"
 
         keyboard = InlineKeyboardMarkup(
             [
@@ -194,7 +194,7 @@ def unmute(update: Update, context: CallbackContext) -> str:
         except BadRequest:
             pass
         reply = (
-            f"Nahhh! Unmuted {mention_html(member.user.id, member.user.first_name)} "
+            f"Nahhh! dah di unmute {mention_html(member.user.id, member.user.first_name)} "
             f"by {mention_html(user.id, user.first_name)} in <b>{message.chat.title}</b>"
         )
         if reason:
@@ -264,7 +264,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 until_date=mutetime,
             )
             msg = (
-                f"Nahhh! Temporary Muted {mention_html(member.user.id, member.user.first_name)} from talking for <code>{time_val}</code> in {chat.title}\n"
+                f"Nahhh!dah di mute bentar {mention_html(member.user.id, member.user.first_name)} selama <code>{time_val}</code> di {chat.title}\n"
                 f"by {mention_html(user.id, html.escape(user.first_name))}",
             )
 
@@ -301,7 +301,7 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
             chat.id,
             excp.message,
         )
-        message.reply_text("Fak gua gabisa mute orang itu cok.")
+        message.reply_text("Dah di mute yeaaa!")
 
     return ""
 
