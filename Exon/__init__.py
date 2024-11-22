@@ -32,7 +32,7 @@ def get_user_list(__init__, key):
 
 
 # enable logging
-FORMAT = "[ᴇxᴏɴ] %(message)s"
+FORMAT = "[blue] %(message)s"
 logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
@@ -43,8 +43,8 @@ logging.getLogger("apscheduler").setLevel(logging.ERROR)
 logging.getLogger("telethon").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 
-LOGGER = logging.getLogger("[ᴇxᴏɴ]")
-LOGGER.info("ᴇxᴏɴ ɪs sᴛᴀʀᴛɪɴɢ. | ᴀɴ ᴀʙɪsʜɴᴏɪᴍғ ᴘʀᴏᴊᴇᴄᴛ ᴘᴀʀᴛs. | ʟɪᴄᴇɴsᴇᴅ ᴜɴᴅᴇʀ ɢᴘʟᴠ3.")
+LOGGER = logging.getLogger("[blue]")
+LOGGER.info("blue is starting | an blue`s project. | lisence under GPLv3.")
 
 try:
     if environ.get("ENV"):
@@ -59,7 +59,7 @@ except Exception as ef:
 # if version < 3.6, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     LOGGER.error(
-        "ʏᴏᴜ ᴍᴜsᴛ ʜᴀᴠᴇ ᴀ ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ ᴏғ ᴀᴛ ʟᴇᴀsᴛ 3.6! ᴍᴜʟᴛɪᴘʟᴇ ғᴇᴀᴛᴜʀᴇs ᴅᴇᴘᴇɴᴅ ᴏɴ ᴛʜɪs. ʙᴏᴛ ǫᴜɪᴛᴛɪɴɢ ʙʏᴇ.",
+        "Minimal piton 3.6! banyak fitur soalnye. cabut duls.",
     )
     sys.exit(1)
 
@@ -78,7 +78,7 @@ API_HASH = Config.API_HASH
 BAN_STICKER = "CAADBQAD3AcAAor_2VaLJ7V3SdP8dgI"
 REDIS_URL = Config.REDIS_URL
 SUPPORT_CHAT = Config.SUPPORT_CHAT
-MONGO_DB = "Exon"  # DON'T EDIT
+MONGO_DB = "Blue"  # DON'T EDIT
 MONGO_PORT = "27017"  # DON'T EDIT
 MONGO_URI = Config.MONGO_URI
 DB_NAME = Config.DB_NAME
@@ -101,7 +101,7 @@ WORKERS = 8
 ALLOW_EXCL = True
 TEMP_DOWNLOAD_DIRECTORY = "./Downloads"
 REM_BG_API_KEY = "LSdLgCceYz8vNqFgJVzrkDgR"
-SPAMWATCH_SUPPORT_CHAT = "@AbishnoiMF"
+SPAMWATCH_SUPPORT_CHAT = "@bluetsst"
 SPAMWATCH_API = Config.SPAMWATCH_API
 ALLOW_CHATS = True
 ARQ_API_URL = "http://arq.hamker.in"
@@ -116,18 +116,18 @@ SPAMMERS = []
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("𝐒𝐩𝐚𝐦𝐖𝐚𝐭𝐜𝐡 ᴀᴘɪ ᴋᴇʏ ɪs ᴍɪssɪɴɢ! ʀᴇᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴄᴏɴғɪɢ.")
+    LOGGER.warning("spamwatch api gacocok. cek ulang config lu.")
 else:
     try:
         sw = spamwatch.Client(SPAMWATCH_API)
     except Exception:
         sw = None
-        LOGGER.warning("ᴄᴀɴ'ᴛ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ sᴘᴀᴍᴡᴀᴛᴄʜ!")
+        LOGGER.warning("gabiasa konek ke spamwatch!")
 
 from Exon.modules.sql import SESSION
 
 telegraph = Telegraph()
-telegraph.create_account(short_name="Exon")
+telegraph.create_account(short_name="Blue")
 
 defaults = tg.Defaults(run_async=True)
 
@@ -199,7 +199,7 @@ DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 
 # ʙᴏᴛ ɪɴғᴏ
-print("[INFO]: ɢᴇᴛᴛɪɴɢ ʙᴏᴛ ɪɴғᴏ...")
+print("[INFO]: dapetin info bot...")
 BOT_ID = dispatcher.bot.id
 BOT_NAME = dispatcher.bot.first_name
 BOT_USERNAME = dispatcher.bot.username
@@ -228,7 +228,7 @@ if CUSTOM_CMD and len(CUSTOM_CMD) >= 1:
 try:
     from Exon.antispam import antispam_cek_user, antispam_restrict_user, detect_user
 
-    LOGGER.info("ɴᴏᴛᴇ: ᴀɴᴛɪsᴘᴀᴍ ʟᴏᴀᴅᴇᴅ!")
+    LOGGER.info("anti spam udah ke load!")
     antispam_module = True
 except ModuleNotFoundError:
     antispam_module = False
@@ -263,11 +263,11 @@ def spamcheck(func):
             antispam_restrict_user(user.id, parsing_date)
         if int(user.id) in SPAMMERS:
             if DEBUG:
-                print("^ ᴛʜɪs ᴜsᴇʀ ɪs sᴘᴀᴍᴍᴇʀ!")
+                print("^orang ini tukang spam!")
             return False
         elif int(chat.id) in BL_CHATS:
             dispatcher.bot.sendMessage(
-                chat.id, "ᴛʜɪs ɢʀᴏᴜᴘ ɪs ɪɴ ʙʟᴀᴄᴋʟɪsᴛ, i'ᴍ ʟᴇᴀᴠᴇ..."
+                chat.id, "grup ny ada di blacklist ane, cabs dlu gakuat..."
             )
             dispatcher.bot.leaveChat(chat.id)
             return False
