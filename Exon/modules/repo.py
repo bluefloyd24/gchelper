@@ -12,29 +12,26 @@ from telethon import __version__ as s
 
 from Exon import Abishnoi as pbot
 
-ABISHNOIX = "https://te.legra.ph/file/abfc49a1cc4b5629dc8cd.jpg"
+blue = "https://telegra.ph/file/78fbd9d73e1f456857222.jpg"
 
 
 @pbot.on_cmd("repo")
 async def repo(_, message):
     await message.reply_photo(
-        photo=ABISHNOIX,
-        caption=f"""✨ **ʜᴇʏ {message.from_user.mention},**
-
-**ᴏᴡɴᴇʀ  : [𝐀ʙɪꜱʜɴᴏɪ](https://t.me/AshokShau)**
-**ᴘʏᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ :** `{y()}`
-**ʟɪʙʀᴀʀʏ ᴠᴇʀꜱɪᴏɴ :** `{o}`
-**ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ :** `{s}`
-**ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀꜱɪᴏɴ :** `{z}`
+        photo=blue,
+        caption=f"""𝗥𝗲𝗽𝗼𝘀𝗶𝘁𝗼𝗿𝘆.
+             [𝐁lue.](https://t.me/zavril)
+             Heroku 1bulan 40K.
+             Deploy repository 𝗕𝗹𝘂𝗲𝗳𝗹𝗼𝘆𝗱-Userbot dibawah!
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "•ᴍᴜꜱɪᴄ•", url="https://github.com/AshokShau/AsuXMusic"
+                        "Deploy", url="https://dashboard.heroku.com/new?template=https://github.com/bluefloyd24/Kazu-Userbot"
                     ),
                     InlineKeyboardButton(
-                        "•ʀᴏʙᴏᴠ1•", url="https://github.com/AshokShau/ExonRobot"
+                        "Ask", url="https://t.me/zavril"
                     ),
                 ]
             ]
